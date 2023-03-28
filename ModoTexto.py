@@ -5,6 +5,7 @@ from os import system
 # programa de controle financeiro pessoal
 while True:
     # Tela de escolha
+    system('clear')
     cabecalho('CONTROLE FINANCEIRO PESSOAL')
     menu()
 

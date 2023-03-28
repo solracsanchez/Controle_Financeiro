@@ -44,20 +44,26 @@ def exibir_resumo():
 # insere uma despesa no banco
 def inserir_despesa():
     while True:
-        system('clear')
-        cabecalho(f'{cor("verm")}Inserir despesa{cor("limpo")}')
-        data = datetime.strptime(input("Insira a data(dd/mm/aaaa): "), '%d/%m/%Y')
-        valor = float(input("Insira o valor: ").replace(',', '.'))
-        descricao = input("Insira a descrição: ").strip()
-        categoria = input("Insira a categoria: ").strip().title()
-        tipo = "despesa"
-        conta = input("Insira a conta: ").strip().title()
-        adicionar_transacao(data, valor, descricao, categoria, tipo, conta)
-        confirm = valida_sn('Confirma Dados [S/N]')
-        if confirm == 'N' or confirm == '':
-            print(f'{cor("verme")}Transação não adicionada!{cor("limpo")}')
-        else:
-            adicionar_transacao(data, valor, descricao, categoria, tipo, conta)
+        while True:
+            system('clear')
+            cabecalho(f'{cor("verm")}INSERIR DESPESA{cor("limpo")}')
+            data = valida_data('Insira a data(dd/mm/aaaa): ')
+            if data is None:
+                break
+            valor = valida_vlr("Insira o valor: ")
+            if valor is None:
+                break
+            descricao = input("Insira a descrição: ").strip()
+            categoria = input("Insira a categoria: ").strip().title()
+            tipo = "despesa"
+            conta = input("Insira a conta: ").strip().title()
+            confirm = valida_sn('Confirma Dados [S/N]')
+            if confirm == 'N' or confirm == '':
+                print(f'{cor("verm")}Transação não adicionada!{cor("limpo")}')
+                break
+            else:
+                adicionar_transacao(data, valor, descricao, categoria, tipo, conta)
+                break
         resp = valida_sn('Adicionar nova transação [S/N]? ')
         if resp == 'N' or resp == '':
             break
@@ -66,19 +72,26 @@ def inserir_despesa():
 # insere uma receita no banco
 def inserir_receita():
     while True:
-        system('clear')
-        cabecalho(f'{cor("verd")}ADICIONAR RECEITA{cor("limpo")}')
-        data = datetime.strptime(input("Insira a data(dd/mm/aaaa): "), '%d/%m/%Y')
-        valor = valida_vlr("Insira o valor: ")
-        descricao = input("Insira a descrição: ").strip()
-        categoria = input("Insira a categoria: ").strip().title()
-        tipo = "receita"
-        conta = input("Insira a conta: ").strip().title()
-        confirm = valida_sn('Confirma Dados [S/N]')
-        if confirm == 'N' or confirm == '':
-            print(f'{cor("verm")}Transação não adicionada!{cor("limpo")}')
-        else:
-            adicionar_transacao(data, valor, descricao, categoria, tipo, conta)
+        while True:
+            system('clear')
+            cabecalho(f'{cor("verd")}INSERIR RECEITA{cor("limpo")}')
+            data = valida_data('Insira a data(dd/mm/aaaa): ')
+            if data is None:
+                break
+            valor = valida_vlr("Insira o valor: ")
+            if valor is None:
+                break
+            descricao = input("Insira a descrição: ").strip()
+            categoria = input("Insira a categoria: ").strip().title()
+            tipo = "receita"
+            conta = input("Insira a conta: ").strip().title()
+            confirm = valida_sn('Confirma Dados [S/N]')
+            if confirm == 'N' or confirm == '':
+                print(f'{cor("verm")}Transação não adicionada!{cor("limpo")}')
+                break
+            else:
+                adicionar_transacao(data, valor, descricao, categoria, tipo, conta)
+                break
         resp = valida_sn('Adicionar nova transação [S/N]? ')
         if resp == 'N' or resp == '':
             break
@@ -143,7 +156,8 @@ def valida_vlr(msg=''):
             vlr = float(input(msg).replace(',', '.'))
         except KeyboardInterrupt:
             print('\nUsuario cancelou a entrada!')
-            break
+            sleep(1)
+            return None
         except:
             print('Opção invalida! ', end='')
         else:
@@ -162,3 +176,30 @@ def valida_sn(msg=''):
             return ''
         else:
             return resp
+
+
+# Validação de entrada de datas
+def valida_data(msg=''):
+    while True:
+        try:
+            ent = input(msg)
+        except KeyboardInterrupt:
+            print('\nUsuario cancelou a entrada!')
+            sleep(1)
+            return None
+        try:
+            data = datetime.strptime(ent, '%d/%m/%Y')
+        except ValueError:
+            try:
+                data = datetime.strptime(ent, '%d/%m')
+            except:
+                print('Data Invalida! ')
+                continue
+            else:
+                data = data.strftime('%d/%m')+f'/{datetime.today().year}'
+                data = datetime.strptime(data, '%d/%m/%Y')
+                return data
+        except Exception as erro:
+            print(erro.__class__)
+        else:
+            return data
