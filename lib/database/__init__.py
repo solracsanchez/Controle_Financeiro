@@ -6,12 +6,10 @@ def abrir_conexao():
     conn = sqlite3.connect('controle_financeiro.db')
     return conn
 
+
 # fecha a conexão com o banco de dados
 def fechar_conexao():
     sqlite3.connect('controle_financeiro.db').close()
-
-
-
 
 
 # define uma função para adicionar uma nova transação
@@ -46,8 +44,6 @@ def excluir_transacao(id_transacao):
     fechar_conexao()
 
 
-
-
 # cria a tabela de transações se ela não existir
 conn = abrir_conexao()
 conn.execute('''CREATE TABLE IF NOT EXISTS transacoes
@@ -62,6 +58,3 @@ conn.execute('''CREATE TABLE IF NOT EXISTS transacoes
                   data_pgto TEXT,
                   recorrente TEXT)''')
 fechar_conexao()
-
-
-

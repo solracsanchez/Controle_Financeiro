@@ -26,7 +26,7 @@ def menu():  # Menu opções da tela inicial
     linhasimp()
 
 
-def cor(cor):
+def cor(clr):
     color = {
         'limpo': "\033[m",
         'verm': '\033[31m',
@@ -37,7 +37,8 @@ def cor(cor):
         'fverd': '\033[42:1m',
         'famar': '\033[30;43:1m',
         'fazul': '\033[30;44:1m'}
-    return color[cor]
+    return color[clr]
 
 
-
+def menu_resumo():
+    pass
