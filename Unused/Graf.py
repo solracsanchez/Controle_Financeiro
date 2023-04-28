@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 
-import ModoTexto
+import Unused.ModoTexto as ModoTexto
 
 
 def exibir_resumo():

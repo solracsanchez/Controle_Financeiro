@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block form %}
+    <h2 class="title shadow radius">{{ titulo }}</h2>
+
+    <div id="tabela">
+        <table>
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Valor</th>
+                    <th>Descrição</th>
+                    <th>Categoria</th>
+                    <th>conta</th>
+                    <th>tipo</th>
+                </tr>
+            </thead>
+        
+            {%for item in lista %}
+            <tr>
+                <td>{{ item['data'].strftime('%d/%m/%Y') }}</td>
+                <td class="valor">R$ {{ item['valor'] }}</td>
+                <td>{{ item['descricao'] }}</td>
+                <td>{{ item['categoria'] }}</td>
+                <td>{{ item['conta'] }}</td>
+                <td>{{ item['tipo'] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>      
+{% endblock %}
+
+

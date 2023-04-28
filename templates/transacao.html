@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block form %}
+    <!-- <h1>Sucesso</h1> -->
+    <h2 class=" title shadow radius">{{ titulo }}</h2>
+    <form action="adicionar" method="post" autocomplete="off">
+                <p>
+            
+            <input type="radio" name="tipo" id="receita" value="receita" required><label for="receita">Receita</label>
+            <input type="radio" name="tipo" id="despesa" value="despesa" required><label for="despesa">Despesa</label>
+            <input type="radio" name="tipo" id="transferencia" value="transferencia" required><label for="transferencia">Transferência</label>
+        </p>
+        <p>
+            <label for="data">Data: </label>
+            <input type="date" name="data" id="data" required>
+        </p>
+        <p>
+            <label for="valor">Valor: </label>
+            <input type="number" step="any" name="valor" id="valor" required>
+        </p>
+        <p>
+            <label for="descricao">Descrição: </label>
+            <input type="text" name="descricao" id="descricao">
+        </p>
+        <p>
+            <label for="categoria">Categoria: </label>
+            <select name="categoria" id="categoria" required>
+                <option disabled selected value> -Escolha Categoria-</option>
+                <option value="acordos">Acordos</option>
+                <option value="almoço">Almoço</option>
+                <option value="binotica">Binotica</option>
+                <option value="carro">Carro</option>
+                <option value="casa">Casa</option>
+                <option value="combustivel">Compras</option>
+                <option value="compras">Combustivel</option>
+                <option value="lazer">Lazer</option>
+                <option value="mecanica">Mecanica</option>
+                <option value="mercado">Mercado</option>
+                <option value="outros">Outros</option>
+                <option value="serviços">Serviços</option>
+                <option value="saude">Saude</option>
+                <option value="trabalho">Trabalho</option>
+                <option value="taxas">Taxas Banco</option>
+                <option value="taxi">Taxi / Pedagios / Estacionamento</option>
+            </select>
+        </p>
+            
+        <p>
+            <label for="conta">Conta: </label>
+            <select name="conta" id="conta" required>
+                <option disabled selected value> -Escolha Conta- </option>
+                <option value="inter">Inter</option>
+                <option value="nubank">Nubank</option>
+                <option value="santander">Santander</option>
+                <option value="cdb nubank">CDB Nubank</option>
+                <option value="outras">Outras</option>
+                <option value="saldo_binotica">Saldo Binotica</option>
+                <option value="ricardo">Ricardo</option>
+                <option value="carteira">Carteira</option>
+                <option value="reserva">Reserva</option>
+                <option value="cartao">Cartão</option>
+            </select>
+        </p>
+        <input type="submit" value="Enviar" class="buttom">
+        {% with message = get_flashed_messages() %}
+        {% if message %}
+            <div class="flash_alerta">
+                {{message[0]}}
+            </div>
+        {%endif%}
+        {% endwith %}
+    </form>
+{% endblock%}

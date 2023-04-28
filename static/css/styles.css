@@ -1,0 +1,169 @@
+@charset "UTF-8";
+
+*{
+    margin: 0;
+    padding: 0px;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: sans-serif;
+}
+
+.shadow{
+    box-shadow: 3px 5px 10px rgba(128, 128, 128, 0.74);
+}
+
+.textshadow{
+    text-shadow: 2px 2px 3px rgb(71, 71, 71);
+}
+
+.radius{
+    border-radius: 15px;
+}
+
+body{
+    background-color: #DAF2E7;
+}
+
+header{
+    display: flex;
+    position: relative;
+    width: 100%;
+    background-image: linear-gradient(120deg, #004b1f, 60%, #03BF4A);
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+    border-bottom: 2px solid white;
+    font-weight: bold;
+}
+
+header img{
+    width: 140px;
+    position: relative;
+    bottom: -60px;
+    border-radius: 50%;
+
+}
+
+header div{
+    padding: 5px;
+}
+header nav{
+    display: flex;
+    position: absolute;
+    left: 3%;
+    bottom: 1px;
+    
+}
+
+header a{
+    color: white;
+    padding: 5px 10px;
+    bottom: 1px;
+    border: 1px solid white;
+    margin-bottom: -2px;
+    border-radius: 8px 8px 0 0;
+    transition: 2ms;
+}
+
+header a:hover{
+    background-color: #03BF4A;
+}
+
+main{
+    display: flex;
+    position: relative;
+    justify-content: center;
+}
+
+.container{
+    display: flex;
+    justify-content: space-around;
+    padding: auto;
+    height: 75vh;
+    width: 1200px;
+}
+
+.principal{
+    background-color: white;
+    width: 800px;
+    margin: 15px;
+    padding: 15px;
+}
+
+main .title{
+    display: flex;
+    position: relative;
+    color: #003A5B;
+    justify-content: center;
+    padding: 10px;
+    border: 2px solid #003A5B;
+    margin-bottom: 30px;
+}
+main form{
+    padding: 15px;
+
+}
+
+main form p{
+    padding: 3px;
+    font-size: 1.2rem;
+}
+
+main form .buttom{
+    margin-top: 20px;
+    margin-left: 30px;
+    padding: 3px 8px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+}
+
+#tabela{
+    width: 100%;
+    padding: 0 15px;
+}
+
+table{
+
+    border-collapse: collapse;  
+    width: 100%;
+    }
+
+table th{
+    border-top: 2px double #006C75;
+    border-bottom: 2px double #006C75;
+    padding: 3px;
+    font-size: 1rem;
+}
+
+
+table td{
+    padding: 2px 5px;
+}
+
+table td.valor{
+text-align: right;
+}
+
+table tr:nth-child(even){
+    background-color: #e0f3fc;
+}
+
+.sidebar{
+    background-color: white;
+    width: 300px;
+    margin: 15px;
+    padding: 15px;
+}
+
+footer{
+    display: flex;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    height: 10vh;
+    justify-content: center;
+    align-items: center;
+    background-color:#003A5B;
+    color: white;
+    border-top: 3px solid #006C75;
+}

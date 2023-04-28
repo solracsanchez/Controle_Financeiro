@@ -1,4 +1,5 @@
 import sqlite3
+from datetime import datetime, date
 
 
 # cria a conexão com o banco de dados
@@ -28,7 +29,7 @@ def retorna_transacoes(query='SELECT * FROM transacoes ORDER BY data'):
     cursor = conn.execute(query)
     transacoes = []
     for row in cursor:
-        transacao = {"id": row[0], "data": row[1], "valor": row[2], "descricao": row[3], "categoria": row[4],
+        transacao = {"id": row[0], "data": datetime.strptime(row[1], '%Y-%m-%d'), "valor": row[2], "descricao": row[3], "categoria": row[4],
                      "tipo": row[5], "conta": row[6], "vlr_original": row[7], "data_pgto": row[8], "recorrente": row[9]}
         transacoes.append(transacao)
         fechar_conexao()
