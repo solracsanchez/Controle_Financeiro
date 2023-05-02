@@ -20,7 +20,8 @@
     border-radius: 15px;
 }
 
-body{
+body, html{
+    height: 100vh;
     background-color: #DAF2E7;
 }
 
@@ -37,11 +38,11 @@ header{
 }
 
 header img{
-    width: 140px;
+    width: 100px;
     position: relative;
-    bottom: -60px;
+    bottom: -40px;
     border-radius: 50%;
-
+    z-index: 9999;
 }
 
 header div{
@@ -73,6 +74,7 @@ main{
     display: flex;
     position: relative;
     justify-content: center;
+    
 }
 
 .container{
@@ -119,25 +121,31 @@ main form .buttom{
 
 #tabela{
     width: 100%;
+    height: 50vh;
     padding: 0 15px;
+    overflow-y: scroll;
 }
 
 table{
-
-    border-collapse: collapse;  
+    border-collapse: separate;  
+    border-spacing: 0px;
     width: 100%;
     }
 
-table th{
-    border-top: 2px double #006C75;
-    border-bottom: 2px double #006C75;
+th{
+    border-top: 2px solid #006C75;
+    border-bottom: 2px solid #006C75;
+    background-color: white;
     padding: 3px;
-    font-size: 1rem;
+    font-size: 1.2rem;
+    position: sticky;
+    top: 0;
 }
 
 
 table td{
-    padding: 2px 5px;
+    padding: 5px;
+    font-size: 1rem;
 }
 
 table td.valor{
@@ -157,7 +165,7 @@ table tr:nth-child(even){
 
 footer{
     display: flex;
-    position: relative;
+    position: absolute;
     bottom: 0;
     width: 100%;
     height: 10vh;

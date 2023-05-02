@@ -36,6 +36,8 @@ def exibir_resumo():
     if request.method == "GET":
         titulo = 'Resumo Financeiro'
         # lista = {}
+        args= request.args
+        print (args)
         lista = MostrarTransacao()
         # for item in lista:
         #     print(item)
@@ -44,3 +46,5 @@ def exibir_resumo():
 
 if __name__ == '__main__':
     app.run(port=4002, debug=True)
+
+

@@ -14,7 +14,7 @@ class Transacao:
     # def GetDados():
     #     self.tipo = request.form.get("tipo")
     #     self.data = request.form.get("data")
-    #     self.valor = request.form.get("valor")
+    #     self.valor = request.form.get("valor")MostrarTransacao
     #     self.descricao = request.form.get("descricao")
     #     self.categoria = request.form.get("categoria")
     #     self.conta = request.form.get("conta")
