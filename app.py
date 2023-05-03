@@ -1,3 +1,4 @@
+
 from flask import Flask, request, render_template, flash
 from lib.funcoes.classes import Transacao, MostrarTransacao
 app = Flask(__name__)
@@ -36,9 +37,11 @@ def exibir_resumo():
     if request.method == "GET":
         titulo = 'Resumo Financeiro'
         # lista = {}
-        args= request.args
+        args= request.args.get
         print (args)
-        lista = MostrarTransacao()
+
+        # print(inicio, final)
+        lista = MostrarTransacao(args)
         # for item in lista:
         #     print(item)
         return render_template('resumo.html', titulo=titulo, lista=lista)
@@ -46,5 +49,3 @@ def exibir_resumo():
 
 if __name__ == '__main__':
     app.run(port=4002, debug=True)
-
-

@@ -1,5 +1,5 @@
+from datetime import date, timedelta
 from lib.database.database import adicionar_transacao, retorna_transacoes
-from datetime import datetime
 
 
 class Transacao:
@@ -24,11 +24,28 @@ class Transacao:
 
 
 
-def MostrarTransacao():
-    lista = retorna_transacoes()
+def MostrarTransacao(args):
+
+    if args('datainicial') == 'mes':
+        final = date.today()
+        inicio = final.replace(day=1)
+        # query = "SELECT * FROM transacoes WHERE data > datetime ('now','start of month') ORDER BY data"
+    elif args('datainicial') == 'trinta':
+        final = date.today()
+        inicio = final-timedelta(days=30)
+    elif args('datainicial') == 'noventa':
+        final = date.today()
+        inicio = final-timedelta(days=90)
+    else:
+        final = date.today()
+        inicio = final-timedelta(days=365)
+
+    query = f"SELECT * FROM transacoes WHERE data BETWEEN '{inicio}' AND datetime ('{final}') ORDER BY data"
+
+    lista = retorna_transacoes(query)
     return lista
-    for i in lista:
-        print(i)
+    # for i in lista:
+    #     print(i)
 # lista = Transacao.MostrarTransacao
 # for i in lista:
 #     print(lista)

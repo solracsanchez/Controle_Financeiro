@@ -33,17 +33,17 @@
 {% block menu %}
     <h1>Periodo</h1>
     <form action="resumo" method="get">
-        <label for="datainicial">Ultimos 30 dias</label>
-        <input type="radio" name="datainicial" id="periodo" value="trinta">
-        <input type="hidden" name="datafinal" id="periodo" value="now">
+        <input type="radio" name="datainicial" id="mes" value="mes">
+        <label for="mes">Mês Atual</label><br>
+        
+        <input type="radio" name="datainicial" id="trinta" value="trinta">
+        <label for="trinta">Ultimos 30 dias</label><br>
 
-        <label for="datainicial">Mês Atual</label>
-        <input type="radio" name="datainicial" id="periodo" value="mes">
-        <input type="hidden" name="datafinal" id="periodo" value="now">
+        <input type="radio" name="datainicial" id="noventa" value="noventa">
+        <label for="noventa">Ultimos 90 dias</label><br>
 
-        <label for="datainicial">Ultimos 90 dias</label>
-        <input type="radio" name="datainicial" id="periodo" value="noventa">
-        <input type="hidden" name="datafinal" id="periodo" value="now">
+
+        
         <input type="submit" value="Filtrar">
     </form>
 {% endblock %}
