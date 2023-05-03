@@ -38,9 +38,9 @@ def MostrarTransacao(args):
         inicio = final-timedelta(days=90)
     else:
         final = date.today()
-        inicio = final-timedelta(days=365)
+        inicio = '' # final-timedelta(days=365)
 
-    query = f"SELECT * FROM transacoes WHERE data BETWEEN '{inicio}' AND datetime ('{final}') ORDER BY data"
+    query = f"SELECT * FROM transacoes WHERE data BETWEEN '{inicio}' AND datetime ('{final}') ORDER BY data DESC"
 
     lista = retorna_transacoes(query)
     return lista
