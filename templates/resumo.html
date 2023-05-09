@@ -3,31 +3,37 @@
 {% block form %}
     <h2 class="title shadow radius">{{ titulo }}</h2>
 
-    <div id="tabela">
-        <table>
-            <thead>
-                <tr>
-                    <th scope="col">Data</th>
-                    <th scope="col">Valor</th>
-                    <th scope="col">Descrição</th>
-                    <th scope="col">Categoria</th>
-                    <th scope="col">Conta</th>
-                    <th scope="col">Tipo</th>
-                </tr>
-            </thead>
+    <form action="resumo" method="post">
+        <div id="tabela">
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col">del</th>
+                        <th scope="col">Data</th>
+                        <th scope="col">Valor</th>
+                        <th scope="col">Descrição</th>
+                        <th scope="col">Categoria</th>
+                        <th scope="col">Conta</th>
+                        <th scope="col">Tipo</th>
+                    </tr>
+                </thead>
         
-            {%for item in lista %}
-            <tr>
-                <td>{{ item['data'].strftime('%d/%m/%Y') }}</td>
-                <td class="valor">R$ {{ item['valor'] }}</td>
-                <td>{{ item['descricao'] }}</td>
-                <td>{{ item['categoria'] }}</td>
-                <td>{{ item['conta'] }}</td>
-                <td>{{ item['tipo'] }}</td>
-            </tr>
-            {% endfor %}
-        </table>
-    </div>      
+                {%for item in lista %}
+                <tr>
+                    <td><input type="checkbox" name="id" id="id" value="{{ item['id'] }}"></td>
+                    <td>{{ item['data'].strftime('%d/%m/%Y') }}</td>
+                    <td class="valor">R$ {{ item['valor'] }}</td>
+                    <td>{{ item['descricao'] }}</td>
+                    <td>{{ item['categoria'] }}</td>
+                    <td>{{ item['conta'] }}</td>
+                    <td>{{ item['tipo'] }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        
+        </div>
+        <button type="submit">Deletar selecionados</button>
+    </form>
 {% endblock %}
 
 {% block menu %}

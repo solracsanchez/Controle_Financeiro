@@ -3,7 +3,8 @@ from lib.database.database import adicionar_transacao, retorna_transacoes
 
 
 class Transacao:
-    def __init__(self, tipo, data, valor, descricao, categoria, conta):
+    def __init__(self, id, tipo, data, valor, descricao, categoria, conta):
+        self.id = id
         self.tipo = tipo
         self.data = data
         self.valor = valor
@@ -21,6 +22,9 @@ class Transacao:
 
     def AdicionarTransacao(self):
         adicionar_transacao(self.data, self.valor, self.descricao, self.categoria, self.tipo, self.conta)
+
+    def DeletaTransacao(self):
+        
 
 
 

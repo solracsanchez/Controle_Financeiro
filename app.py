@@ -32,7 +32,7 @@ def adicionar():
         return render_template('transacao.html', titulo=titulo)
 
 
-@app.route('/resumo', methods=['GET'])
+@app.route('/resumo', methods=['GET', 'POST'])
 def exibir_resumo():
     if request.method == "GET":
         titulo = 'Resumo Financeiro'
@@ -45,6 +45,22 @@ def exibir_resumo():
         # for item in lista:
         #     print(item)
         return render_template('resumo.html', titulo=titulo, lista=lista)
+    
+    else:
+        ids = request.form.get
+        print(ids)
+        
+        titulo = 'Resumo Financeiro'
+        args= request.args.get
+        # print (args)
+
+        # print(inicio, final)
+        lista = MostrarTransacao(args)
+        # for item in lista:
+        #     print(item)
+        return render_template('resumo.html', titulo=titulo, lista=lista)
+
+
 
 
 if __name__ == '__main__':
